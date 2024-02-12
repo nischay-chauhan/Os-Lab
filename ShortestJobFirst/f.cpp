@@ -41,6 +41,8 @@ int main(){
     int totalWaitingTime = 0;
     int totalTurnaroundTime = 0;
 
+    cout << "Time\t Process\t Burst Time" << endl;
+
     while(completedProcesses < n){
         int selectedProcess = -1;
         int minBurstTime = INT_MAX;
@@ -59,6 +61,8 @@ int main(){
         } else {
             currentTime++;
             processes[selectedProcess].burstTime--;
+
+            cout << currentTime << "\t" << processes[selectedProcess].id << "\t\t" << processes[selectedProcess].burstTime << endl;
 
             if(processes[selectedProcess].burstTime == 0){
                 completedProcesses++;
