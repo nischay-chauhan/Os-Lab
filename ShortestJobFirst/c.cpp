@@ -1,3 +1,4 @@
+/* Non Primitive Method for the shortest Job Fisrt  */
 #include <iostream>
 #include <vector>
 #include <algorithm>

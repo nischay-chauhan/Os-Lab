@@ -1,3 +1,4 @@
+/* Primitive method for the shortest Job Fisrt first approach with printing the completion time in ascending order */
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -17,6 +18,10 @@ bool compareArrivalTime(const Process& a, const Process& b) {
 
 bool compareBurstTime(const Process& a, const Process& b) {
     return a.burstTime < b.burstTime;
+}
+
+bool compareCompletionTime(const Process& a, const Process& b) {
+    return a.completionTime < b.completionTime;
 }
 
 int main(){
@@ -65,6 +70,8 @@ int main(){
             }
         }
     }
+
+    sort(processes.begin(), processes.end(), compareCompletionTime);
 
     for (const auto& p : processes) {
         cout << "Process " << p.id << " - Completion Time: " << p.completionTime

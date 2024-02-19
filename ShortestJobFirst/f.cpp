@@ -1,3 +1,4 @@
+/* Primitive method for the shortest Job Fisrt with the print of every single time stamp */
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -17,6 +18,10 @@ bool compareArrivalTime(const Process& a, const Process& b) {
 
 bool compareBurstTime(const Process& a, const Process& b) {
     return a.burstTime < b.burstTime;
+}
+
+bool compareCompletionTime(const Process& a, const Process& b) {
+    return a.completionTime < b.completionTime;
 }
 
 int main(){
@@ -77,6 +82,7 @@ int main(){
     }
 
     cout << "Process\t \tCompletion Time \tWaiting Time\t Turnaround Time" << endl;
+    sort(processes.begin(), processes.end(), compareCompletionTime);
     for (const auto& p : processes) {
         cout << p.id << "\t\t" << p.completionTime << "\t\t\t" << p.waitingTime << "\t\t\t" << p.turnaroundTime << endl;
     }

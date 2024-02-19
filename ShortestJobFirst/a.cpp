@@ -1,3 +1,4 @@
+/* First approach for the shortest job first using with the non primitive method and using vectors but later optimised in next file by defining a structure  */
 #include <iostream>
 #include <vector>
 #include <algorithm>
