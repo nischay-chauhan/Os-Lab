@@ -4,7 +4,7 @@ using namespace std;
 void FIFOPageReplacement(vector<int>& pages, int capacity) {
     queue<int> pageQueue;
     int pageFaults = 0;
-
+    int hit = 0;
     for (int page : pages) {
         bool found = false;
         queue<int> tempQueue = pageQueue;
@@ -12,6 +12,7 @@ void FIFOPageReplacement(vector<int>& pages, int capacity) {
         while (!tempQueue.empty()) {
             if (tempQueue.front() == page) {
                 found = true;
+                hit +=1;
                 break;
             }
             tempQueue.pop();
@@ -26,6 +27,10 @@ void FIFOPageReplacement(vector<int>& pages, int capacity) {
     }
 
     cout << "Total Page Faults: " << pageFaults << endl;
+    cout << "Total Hits : " << hit << endl;
+    /* Alternatively you can use this
+    cout << "Total Hits : " << pages.size() - pageFaults << endl;
+     */
 }
 
 int main() {
