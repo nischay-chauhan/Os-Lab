@@ -7,15 +7,14 @@ void FIFOPageReplacement(vector<int>& pages, int capacity) {
     int hit = 0;
     for (int page : pages) {
         bool found = false;
-        queue<int> tempQueue = pageQueue;
-
-        while (!tempQueue.empty()) {
-            if (tempQueue.front() == page) {
+        queue<int> temp = pageQueue;
+        while (!temp.empty()) {
+            if (temp.front() == page) {
                 found = true;
                 hit +=1;
                 break;
             }
-            tempQueue.pop();
+            temp.pop();
         }
         if (!found) {
             if (pageQueue.size() == capacity) {
@@ -28,6 +27,11 @@ void FIFOPageReplacement(vector<int>& pages, int capacity) {
 
     cout << "Total Page Faults: " << pageFaults << endl;
     cout << "Total Hits : " << hit << endl;
+    cout << "Element present in the last queue" <<endl;
+    while(!pageQueue.empty()){
+        cout << pageQueue.front() << " " << endl;
+        pageQueue.pop();
+    }
     /* Alternatively you can use this
     cout << "Total Hits : " << pages.size() - pageFaults << endl;
      */
