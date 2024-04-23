@@ -10,8 +10,8 @@ void LRUPageReplacement(vector<int>& pages, int capacity) {
     
     for (int page : pages) {
         if (pageMap.find(page) != pageMap.end()) {
-            pageStack.pop_back();
-            pageMap.erase(pageStack.back());
+            deque<int>::iterator it = find(pageStack.begin(), pageStack.end(), page);
+            pageStack.erase(it);
             pageStack.push_front(page);
             pageMap[page] = true;
             hit++;
@@ -36,9 +36,8 @@ void LRUPageReplacement(vector<int>& pages, int capacity) {
 }
 
 int main() {
-    vector<int> pages = {5,0,1,2,0,3,2,0,3,4,1,0,5,0,4,3,2,1,2,0,1};
-    int capacity = 3;
+        vector<int> pages = {7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 3};
+    int capacity = 4;
     LRUPageReplacement(pages, capacity);
-
     return 0;
 }
